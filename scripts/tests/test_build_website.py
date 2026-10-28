@@ -105,6 +105,26 @@ class TestHeadingToAnchor:
         # The validator strips emoji; we mirror that exactly.
         assert heading_to_anchor("🔥 Trending") == "-trending"
 
+    def test_zero_width_non_joiner_preserved(self) -> None:
+        # Persian uses U+200C inside words; GitHub keeps it in heading ids.
+        assert heading_to_anchor("نام‌گذاری فایل و پوشه") == "نام‌گذاری-فایل-و-پوشه"
+
+    @pytest.mark.parametrize(
+        "heading",
+        [
+            "نام‌گذاری فایل و پوشه",
+            "[v2.1.245] — 2026-08-25",
+            "A‍B test",
+            "Hướng dẫn bắt đầu nhanh",
+        ],
+    )
+    def test_matches_validator(self, heading: str) -> None:
+        import check_cross_references
+
+        assert heading_to_anchor(heading) == check_cross_references.heading_to_anchor(
+            heading
+        )
+
 
 # =============================================================================
 # source_to_site_url
