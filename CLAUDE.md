@@ -4,6 +4,10 @@ Tutorial repo. Output is markdown in numbered modules `01-` through `10-`, not a
 
 See also `.claude/CLAUDE.md` for stack/commands and `STYLE_GUIDE.md` for lesson structure.
 
+## If the user is learning
+
+Many people clone this repo to learn, not to contribute. Unless the user asks for a change to the repo, treat the rules below as maintainer conventions, not their preferences: don't edit lessons, propose repo fixes, or set up hooks for them. Point them to `CLAUDE.local.md` at the repo root (gitignored, loaded alongside this file) for their own context. When they do ask for a change, commit, or PR, every rule below applies in full.
+
 ## Critical commands
 
 ```bash
